@@ -1,0 +1,29 @@
+class Solution {
+public:
+    string getHint(string secret, string guess) {
+
+        int bull=0, cow=0;
+        unordered_map<char, int>sMap;
+        unordered_map<char, int>gMap;
+
+        for(int i=0;i<secret.size();i++){
+            sMap[secret[i]]++;
+            gMap[guess[i]]++;
+
+            if(secret[i]==guess[i]){
+                bull++;
+            }
+        }
+
+        for(char i='0';i<='9';i++){
+            cow+=min(sMap[i], gMap[i]);
+        }
+
+        cow-=bull;
+
+        string ans= to_string(bull)+"A"+to_string(cow)+"B";
+
+        return ans;
+        
+    }
+};
