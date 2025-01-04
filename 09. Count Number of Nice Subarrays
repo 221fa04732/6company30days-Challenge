@@ -1,0 +1,27 @@
+class Solution {
+public:
+
+    int fun(vector<int>& nums, int k)
+    {
+        if(k<0)  return 0;
+        int i=0,j=0,ans=0,odd=0;
+        while(i<nums.size())
+        {
+            odd+=(nums[i]%2);
+            while(odd>k)
+            {
+                odd-=(nums[j]%2);
+                j++;
+            }
+            ans+=(i-j+1);
+            i++;
+        }
+        return ans;
+        
+    }
+
+    int numberOfSubarrays(vector<int>& nums, int k) 
+    {
+        return fun(nums, k)- fun(nums, k-1);
+    }
+};
