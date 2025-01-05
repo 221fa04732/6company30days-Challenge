@@ -1,0 +1,22 @@
+class Solution {
+public:
+    string convertToTitle(int columnNumber) 
+    {
+        char arr[26]={'Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y'};
+
+
+        string ans="";
+        int rem=0;
+        while(columnNumber){
+            rem=columnNumber%26;
+            ans+=arr[rem];
+            if(rem==0){
+                columnNumber--;
+            }
+            columnNumber/=26;
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+        
+    }
+};
